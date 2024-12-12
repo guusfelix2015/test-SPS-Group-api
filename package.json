@@ -1,0 +1,27 @@
+{
+  "name": "test-sps-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": " nodemon --inspect=7000 src/index.js",
+    "lint": "yarn eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "yarn prettier --write ."
+  },
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.1",
+    "jsonwebtoken": "^9.0.2",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "eslint": "^9.16.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "nodemon": "^3.1.0",
+    "prettier": "^3.4.2"
+  }
+}
