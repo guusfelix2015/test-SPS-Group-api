@@ -2,9 +2,10 @@ const fs = require('fs');
 const path = require('path');
 
 const DB_FILE = path.join(__dirname, '..', 'data', 'db.json');
-const SECRET_KEY = 'secret';
+const SECRET_KEY = 'sua_chave_secreta_aqui';
 
 const defaultAdmin = {
+  id: '00000000-0000-0000-0000-000000000000',
   name: 'admin',
   email: 'admin@spsgroup.com.br',
   password: '1234',

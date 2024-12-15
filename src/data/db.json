@@ -6,6 +6,13 @@
       "password": "1234",
       "type": "admin",
       "id": "00000000-0000-0000-0000-000000000000"
+    },
+    {
+      "id": "fba65338-4b08-4c9d-91d8-8b3da8adb5b3",
+      "name": "Gustavo",
+      "email": "coy@gmail.com",
+      "password": "123456",
+      "type": "user"
     }
   ]
 }

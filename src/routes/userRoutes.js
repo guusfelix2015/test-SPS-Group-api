@@ -1,26 +1,44 @@
 const express = require('express');
 const router = express.Router();
-const UserController = require('../controllers/userController');
+const createContainer = require('../config/container');
 const authenticateToken = require('../middleware/auth');
-const isAdmin = require('../middleware/adminAuth');
 const validateRequest = require('../middleware/validateRequest');
 const userSchemas = require('../schemas/userSchema');
 
-router.post('/login', validateRequest(userSchemas.login), UserController.login);
+const { userController } = createContainer();
+
+router.post('/login', validateRequest(userSchemas.login), (req, res) =>
+  userController.login(req, res)
+);
+
 router.post(
   '/',
   authenticateToken,
   validateRequest(userSchemas.create),
-  UserController.create
+  (req, res) => userController.create(req, res)
 );
+
+router.get('/', authenticateToken, (req, res) =>
+  userController.getAll(req, res)
+);
+
+router.get('/me', authenticateToken, (req, res) =>
+  userController.getCurrentUser(req, res)
+);
+
+router.get('/:id', authenticateToken, (req, res) =>
+  userController.getById(req, res)
+);
+
 router.put(
   '/:id',
   authenticateToken,
   validateRequest(userSchemas.update),
-  UserController.update
+  (req, res) => userController.update(req, res)
 );
-router.delete('/:id', authenticateToken, UserController.delete);
-router.get('/', authenticateToken, UserController.getAll);
-router.get('/me', authenticateToken, UserController.getMe);
+
+router.delete('/:id', authenticateToken, (req, res) =>
+  userController.delete(req, res)
+);
 
 module.exports = router;
